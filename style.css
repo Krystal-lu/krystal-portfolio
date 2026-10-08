@@ -77,3 +77,5 @@ button{font:inherit;color:inherit}
 .work-feed .gallery-track{width:100%}
 .work-feed .gallery-item{flex:0 0 100%;min-width:100%;max-width:100%}
 @media(max-width:540px){.work-feed .work-row > .gallery{margin-left:-22px;margin-right:-22px}}
+
+#five .gallery-prev,#five .gallery-next{display:none}

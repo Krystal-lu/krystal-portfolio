@@ -47,9 +47,7 @@ function galleryItem(work, n){
     return `<figure class="gallery-item renature-gallery">${content}<figcaption>Re-Natured Nature · ${n===1?'Installation overview':'Project video'} · ${n} / 2 · <a href="re-natured-nature.html">CASE STUDY ↗</a></figcaption></figure>`;
   }
   if(work.id==='five'){
-    if(n===1) return `<figure class="gallery-item atlas-gallery atlas-video-slide"><video controls playsinline preload="metadata" aria-label="Little Atlas complete usage demonstration"><source src="assets/little-atlas/use-demo.mp4" type="video/mp4"></video><figcaption>Little Atlas · Complete usage demo · 1 / 2 · <a href="little-atlas.html">CASE STUDY ↗</a></figcaption></figure>`;
-    const media='planner';
-    return `<figure class="gallery-item atlas-gallery"><a href="little-atlas.html"><div class="atlas-image"><img src="assets/little-atlas/${media}-original.png" alt="Little Atlas ${n===1?'globe and saved memories':'trip planning preferences'}" loading="lazy"></div></a><figcaption>Little Atlas · ${n===1?'A personal memory atlas':'Plan the next journey'} · ${n} / 2 · <a href="little-atlas.html">CASE STUDY ↗</a></figcaption></figure>`;
+    return `<figure class="gallery-item atlas-gallery atlas-video-slide"><video controls playsinline preload="metadata" aria-label="Little Atlas complete usage demonstration"><source src="assets/little-atlas/use-demo.mp4" type="video/mp4"></video><figcaption>Little Atlas · Complete usage demo · <a href="little-atlas.html">CASE STUDY ↗</a></figcaption></figure>`;
   }
   if(work.id==='four'){
     const content=n===1?`<a href="food-time.html"><img src="assets/food-time/cover.png" alt="Food Time immersive installation concept"></a>`:`<video controls playsinline preload="metadata" poster="assets/food-time/cover.png" aria-label="Food Time concept film"><source src="assets/food-time/demo-en.mp4" type="video/mp4"></video>`;
@@ -87,7 +85,7 @@ function workRow(work, index){
       <p><b>VISIT</b> ${work.id==='one' ? '<a href="aiger-notes.html">CASE STUDY ↗</a> · <a href="aiger.html">LIVE PROTOTYPE ↗</a>' : work.id==='two' ? '<a href="emobox.html">CASE STUDY ↗</a> · <a href="emobox.html#demo">USAGE VIDEO ↗</a>' : work.id==='three' ? '<a href="fitsole.html">CASE STUDY ↗</a> · <a href="fitsole.html#demo">PROJECT DEMO ↗</a>' : work.id==='four' ? '<a href="food-time.html">CASE STUDY ↗</a> · <a href="food-time.html#demo">CONCEPT FILM ↗</a>' : work.id==='five' ? '<a href="little-atlas.html">CASE STUDY ↗</a> · <a href="https://little-atlas-9tcl.vercel.app/" target="_blank" rel="noopener">LIVE PROTOTYPE ↗</a>' : work.id==='six' ? '<a href="re-natured-nature.html">CASE STUDY ↗</a> · <a href="re-natured-nature.html#demo">PROJECT VIDEO ↗</a>' : 'project link / case study link'}</p>
     </div>
     <div class="gallery" data-gallery="${work.id}">
-      <div class="gallery-track">${(['two','three','four','five','six'].includes(work.id)?[1,2]:[1,2,3]).map(n => galleryItem(work,n)).join('')}</div>
+      <div class="gallery-track">${(work.id==='five'?[1]:['two','three','four','six'].includes(work.id)?[1,2]:[1,2,3]).map(n => galleryItem(work,n)).join('')}</div>
       <button class="gallery-prev" type="button" aria-label="Previous media">←</button>
       <button class="gallery-next" type="button" aria-label="Next media">→</button>
     </div>
