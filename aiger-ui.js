@@ -30,7 +30,7 @@ setInterval(()=>{if(state.countdown>0){const old=state.countdown;const modal=sta
 render();
 
 // Portfolio scenarios replay the same reducer; no real sensors or calls are connected.
-const portfolioScenes={cooking:[{type:'pan'},{type:'ignite'}],away:[{type:'pan'},{type:'ignite'},{type:'heat',value:'High'},{type:'unattended'},{type:'long-away'}],seasoning:[{type:'pan'},{type:'ignite'},{type:'salt'},{type:'salt'},{type:'salt'},{type:'seasoning'}],fall:[{type:'risk',value:'fall'}],family:[{type:'family'}]};
+const portfolioScenes={'hood-off':[{type:'pan'},{type:'ignite'},{type:'toggle',device:'hood'}],cooking:[{type:'pan'},{type:'ignite'}],away:[{type:'pan'},{type:'ignite'},{type:'heat',value:'High'},{type:'unattended'},{type:'long-away'}],seasoning:[{type:'pan'},{type:'ignite'},{type:'salt'},{type:'salt'},{type:'salt'},{type:'seasoning'}],fall:[{type:'risk',value:'fall'}],family:[{type:'family'}]};
 function showPortfolioScene(name){if(!portfolioScenes[name]&&name!=='normal')return;state=E.initial();view=name==='fall'||name==='family'?'safety':'appliances';for(const action of portfolioScenes[name]||[])state=E.reduce(state,action);$('#announcement').textContent=state.logs[0]||'All normal.';render();}
 window.addEventListener('message',event=>{if(event.origin!==location.origin||event.source!==parent)return;if(event.data?.type==='aiger-scene')showPortfolioScene(event.data.scene);});
 const initialScene=new URLSearchParams(location.search).get('scene');if(initialScene)showPortfolioScene(initialScene);
