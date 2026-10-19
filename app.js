@@ -43,30 +43,30 @@ function emoboxHero(){return `<img class="emobox-cover-image" src="assets/emobox
 function galleryItem(work, n){
   if(work.id==='six'){
     const content=n===1?`<a href="re-natured-nature.html"><img src="assets/re-natured-nature/scene-original.png" alt="Re-Natured Nature installation overview"></a>`:`<video controls playsinline preload="metadata" poster="assets/re-natured-nature/scene-original.png" aria-label="Re-Natured Nature project demonstration"><source src="assets/re-natured-nature/demo.mp4" type="video/mp4"></video>`;
-    return `<figure class="gallery-item renature-gallery">${content}<figcaption>Re-Natured Nature · ${n===1?'Installation overview':'Project video'} · ${n} / 2 · <a href="re-natured-nature.html">CASE STUDY ↗</a></figcaption></figure>`;
+    return `<figure class="gallery-item renature-gallery">${content}<figcaption>Re-Natured Nature · ${n===1?'Installation overview':'Project video'} · ${n} / 2</figcaption></figure>`;
   }
   if(work.id==='five'){
-    return `<figure class="gallery-item atlas-gallery atlas-video-slide"><video controls playsinline preload="metadata" aria-label="Little Atlas complete usage demonstration"><source src="assets/little-atlas/use-demo.mp4" type="video/mp4"></video><figcaption>Little Atlas · Complete usage demo · <a href="little-atlas.html">CASE STUDY ↗</a></figcaption></figure>`;
+    return `<figure class="gallery-item atlas-gallery atlas-video-slide"><video controls playsinline preload="metadata" aria-label="Little Atlas complete usage demonstration"><source src="assets/little-atlas/use-demo.mp4" type="video/mp4"></video><figcaption>Little Atlas · Complete usage demo</figcaption></figure>`;
   }
   if(work.id==='four'){
     const content=n===1?`<a href="food-time.html"><img src="assets/food-time/cover.png" alt="Food Time immersive installation concept"></a>`:`<video controls playsinline preload="metadata" poster="assets/food-time/cover.png" aria-label="Food Time concept film"><source src="assets/food-time/demo-en.mp4" type="video/mp4"></video>`;
-    return `<figure class="gallery-item food-gallery">${content}<figcaption>Food Time · ${n===1?'Immersive experience concept':'Concept film'} · ${n} / 2 · <a href="food-time.html">CASE STUDY ↗</a></figcaption></figure>`;
+    return `<figure class="gallery-item food-gallery">${content}<figcaption>Food Time · ${n===1?'Immersive experience concept':'Concept film'} · ${n} / 2</figcaption></figure>`;
   }
 
   if(work.id==='three'){
     const content=n===1?`<a href="fitsole.html"><img src="assets/fitsole/walking.png" alt="Fitsole walking scenario from the original project"></a>`:`<video controls playsinline preload="metadata" poster="assets/fitsole/walking.png" aria-label="Fitsole project demonstration"><source src="assets/fitsole/use-demo-v2.mp4" type="video/mp4"></video>`;
-    return `<figure class="gallery-item fitsole-gallery ${n===2?'fitsole-video-slide':''}">${content}<figcaption>Fitsole · ${n===1?'Everyday walking scenario':'Project demo'} · ${n} / 2 · <a href="fitsole.html">CASE STUDY ↗</a></figcaption></figure>`;
+    return `<figure class="gallery-item fitsole-gallery ${n===2?'fitsole-video-slide':''}">${content}<figcaption>Fitsole · ${n===1?'Everyday walking scenario':'Project demo'} · ${n} / 2</figcaption></figure>`;
   }
 
   if(work.id==='two'){
     const content=n===1?`<a class="emobox-full-cover" href="emobox.html">${emoboxHero()}</a>`:`<video class="emobox-home-video" controls playsinline preload="none" poster="assets/emobox/cover.png" aria-label="EmoBox usage demonstration"><source src="assets/emobox/use-demo-web.mp4"></video>`;
-    return `<figure class="gallery-item emobox-gallery ${n===2?'emobox-video-slide':''}">${content}<figcaption class="type-caption">EmoBox · ${n===1?'Momo in everyday life':'Usage demonstration'} · ${n} / 2 · <a href="emobox.html">CASE STUDY ↗</a></figcaption></figure>`;
+    return `<figure class="gallery-item emobox-gallery ${n===2?'emobox-video-slide':''}">${content}<figcaption class="type-caption">EmoBox · ${n===1?'Momo in everyday life':'Usage demonstration'} · ${n} / 2</figcaption></figure>`;
   }
 
   if(work.id==='one') {
     const scenes=[{name:'front',label:'Front view',quad:[[1251,445],[1347,445],[1347,512],[1251,512]]},{name:'angle',label:'Angled view',quad:[[1028,405],[1112,401],[1112,460],[1028,465]]},{name:'low',label:'Lower view',quad:[[1037,462],[1136,465],[1136,530],[1037,527]]}];
     const scene=scenes[n-1];
-    return `<figure class="gallery-item"><a class="aiger-hero-link" href="aiger-notes.html"><div class="kitchen-scene" data-quad='${JSON.stringify(scene.quad)}'><img class="kitchen-render" src="assets/aiger-scenes/${scene.name}.jpg" alt="AIGER Kitchen overall spatial concept — ${scene.label}" loading="eager"><img class="screen-ui" src="assets/aiger-scenes/ui-normal.jpg" alt="" aria-hidden="true"></div></a><figcaption class="type-caption">AIGER Kitchen · ${scene.label} · ${n} / 3 · <a href="aiger-notes.html">READ THE DESIGN STORY ↗</a></figcaption></figure>`;
+    return `<figure class="gallery-item"><a class="aiger-hero-link" href="aiger-notes.html"><div class="kitchen-scene" data-quad='${JSON.stringify(scene.quad)}'><img class="kitchen-render" src="assets/aiger-scenes/${scene.name}.jpg" alt="AIGER Kitchen overall spatial concept — ${scene.label}" loading="eager"><img class="screen-ui" src="assets/aiger-scenes/ui-normal.jpg" alt="" aria-hidden="true"></div></a><figcaption class="type-caption">AIGER Kitchen · ${scene.label} · ${n} / 3</figcaption></figure>`;
   }
   return `<figure class="gallery-item">
     ${visual({...work, title:`${work.title} / ${String(n).padStart(2,'0')}`})}
@@ -74,19 +74,29 @@ function galleryItem(work, n){
   </figure>`;
 }
 
+
+const projectLinks = {
+  one: {case:'aiger-notes.html', secondary:'aiger-notes.html#prototype', label:'Try the kitchen demo', hint:'Interactive appliance controls'},
+  five: {case:'little-atlas.html', secondary:'https://little-atlas-9tcl.vercel.app/', label:'Try Little Atlas', hint:'Opens the working app', external:true},
+  two: {case:'emobox.html', secondary:'emobox.html#demo', label:'Watch the demo', hint:'See the companion and app in use'},
+  three: {case:'fitsole.html', secondary:'fitsole.html#demo', label:'Watch the demo', hint:'See the physical prototype'},
+  four: {case:'food-time.html', secondary:'food-time.html#demo', label:'Watch the concept film', hint:'See the proposed experience'},
+  six: {case:'re-natured-nature.html', secondary:'re-natured-nature.html#demo', label:'Watch the demo', hint:'See gestures change the visuals'}
+};
+function projectActions(work){const link=projectLinks[work.id];return `<nav class="project-actions" aria-label="Explore ${work.title}"><a class="project-entry primary" href="${link.case}"><span>View case study</span><span aria-hidden="true">↗</span></a><a class="project-entry secondary" href="${link.secondary}" ${link.external?'target="_blank" rel="noopener"':''}><span>${link.label}</span><span aria-hidden="true">${link.external?'↗':'→'}</span></a><span class="entry-description">Case study: the problem, design decisions and outcome.</span></nav>`;}
+
 function workRow(work, index){
   return `<section class="work-row" id="${work.id}" data-work="${index}">
     <div class="work-name"><span class="type-label">${String(index+1).padStart(2,'0')}</span><h2 class="display type-project-title">${work.title}</h2></div>
     <div class="work-copy type-body">
       <p>${work.text}</p>
+      ${projectActions(work)}
       <p><b>ROLE</b> ${work.role}</p>
       <p><b>YEAR</b> ${work.year}</p>
-      <p><b>VISIT</b> ${work.id==='one' ? '<a href="aiger-notes.html">CASE STUDY ↗</a> · <a href="aiger-notes.html#prototype">TRY KITCHEN INTERFACE ↗</a>' : work.id==='two' ? '<a href="emobox.html">CASE STUDY ↗</a> · <a href="emobox.html#demo">USAGE VIDEO ↗</a>' : work.id==='three' ? '<a href="fitsole.html">CASE STUDY ↗</a> · <a href="fitsole.html#demo">PROJECT DEMO ↗</a>' : work.id==='four' ? '<a href="food-time.html">CASE STUDY ↗</a> · <a href="food-time.html#demo">CONCEPT FILM ↗</a>' : work.id==='five' ? '<a href="little-atlas.html">CASE STUDY ↗</a> · <a href="https://little-atlas-9tcl.vercel.app/" target="_blank" rel="noopener">LIVE PROTOTYPE ↗</a>' : work.id==='six' ? '<a href="re-natured-nature.html">CASE STUDY ↗</a> · <a href="re-natured-nature.html#demo">PROJECT VIDEO ↗</a>' : 'project link / case study link'}</p>
     </div>
     <div class="gallery" data-gallery="${work.id}">
       <div class="gallery-track">${(work.id==='five'?[1]:['two','three','four','six'].includes(work.id)?[1,2]:[1,2,3]).map(n => galleryItem(work,n)).join('')}</div>
-      <button class="gallery-prev" type="button" aria-label="Previous media">←</button>
-      <button class="gallery-next" type="button" aria-label="Next media">→</button>
+      <div class="gallery-navigation"><div class="media-browser"><button class="media-previous" type="button" aria-label="Previous preview for ${work.title}">← <span>Previous</span></button><span class="media-position" role="status" aria-live="polite"></span><button class="media-next" type="button" aria-label="Next preview for ${work.title}"><span>Next</span> →</button></div><a class="gallery-open-case" href="${projectLinks[work.id].case}">View ${work.title} case study <span aria-hidden="true">↗</span></a></div>
     </div>
   </section>`;
 }
@@ -127,13 +137,27 @@ function setupInteractions(){
     let current = 0;
     const track = gallery.querySelector('.gallery-track');
     const items = gallery.querySelectorAll('.gallery-item');
+    const row=gallery.closest('.work-row');
+    const title=row.querySelector('h2').textContent;
+    items.forEach(item=>{
+      const imageLink=item.querySelector('a:has(img)');
+      if(imageLink){
+        imageLink.classList.add('media-entry');
+        imageLink.setAttribute('aria-label','View '+title+' case study');
+        imageLink.insertAdjacentHTML('beforeend','<span class="image-entry-label">View case study <span aria-hidden="true">↗</span></span>');
+      }
+    });
+    if(items.length===1) gallery.classList.add('single-preview');
     const update = () => {
       track.style.transform = `translateX(${-current * 100}%)`;
       items.forEach((item,index)=>{const video=item.querySelector('video');if(video&&index!==current)video.pause();});
       gallery.classList.toggle('showing-video',!!items[current].querySelector('video,iframe'));
+      gallery.querySelector('.media-position').textContent=(items[current].querySelector('video')?'Video':'Image')+' '+(current+1)+' / '+items.length;
+      items.forEach((item,index)=>{item.inert=index!==current;});
     };
-    gallery.querySelector('.gallery-next').addEventListener('click', () => { current = (current + 1) % items.length; update(); });
-    gallery.querySelector('.gallery-prev').addEventListener('click', () => { current = (current - 1 + items.length) % items.length; update(); });
+    gallery.querySelector('.media-next').addEventListener('click', () => { current = (current + 1) % items.length; update(); });
+    gallery.querySelector('.media-previous').addEventListener('click', () => { current = (current - 1 + items.length) % items.length; update(); });
+    update();
   });
 }
 
