@@ -16,11 +16,12 @@ function visual(work, compact=false){
   return `<div class="visual visual-${work.tone} ${compact ? 'compact' : ''}"><span class="visual-word">${work.title}</span><i class="visual-caption">${work.line}</i></div>`;
 }
 
-function heroSlide(work, index){
-  return `<section class="cover-slide ${index === 0 ? 'active' : ''}" data-slide="${index}" data-target="${work.id}">
+function heroSlide(){
+  return `<section class="cover-slide active" aria-label="Introduction">
     <div class="cover-shade"></div>
-    <div class="cover-title display type-hero">SELECTED WORKS BY<br>KRYSTAL LU ©</div>
-    <div class="cover-positioning"><p>UX &amp; INTERACTION DESIGN</p><a href="#one">01 / AIGER Kitchen ↗</a><a href="#five">02 / Little Atlas ↗</a></div><div class="cover-meta"><span class="type-label">${String(index+1).padStart(2,'0')}</span><b>${work.title}</b><small class="type-caption">${work.line}</small></div>
+    <div class="cover-positioning"><p>UX DESIGNER</p><span>Product &amp; Interaction Design</span></div>
+    <h1 class="cover-title display type-hero">SELECTED WORKS BY<br>KRYSTAL LU ©</h1>
+    <a class="cover-scroll" href="#one"><span>Scroll to explore my work</span><span aria-hidden="true">↓</span></a>
   </section>`;
 }
 
@@ -102,37 +103,10 @@ function workRow(work, index){
 }
 
 function render(){
-  document.querySelector('#content').innerHTML = `<div class="cover-stage">${works.slice(0,1).map(heroSlide).join('')}</div><section class="work-feed">${works.map(workRow).join('')}</section>${aboutBlock()}<footer class="end"><a href="mailto:xinru_lu@berkeley.edu">CONTACT XINRU_LU@BERKELEY.EDU</a><a href="#top">BACK TO TOP</a><span>©2026 KRYSTAL LU</span></footer>`;
-  document.querySelector('.index-grid').innerHTML = works.map((work, index) => `<a href="#${work.id}" data-index-link><small>${String(index+1).padStart(2,'0')}</small>${visual(work,true)}<b>${work.title}</b></a>`).join('');
+  document.querySelector('#content').innerHTML = `<div class="cover-stage">${heroSlide()}</div><section class="work-feed">${works.map(workRow).join('')}</section>${aboutBlock()}<footer class="end"><a href="mailto:xinru_lu@berkeley.edu">CONTACT XINRU_LU@BERKELEY.EDU</a><a href="#top">BACK TO TOP</a><span>©2026 KRYSTAL LU</span></footer>`;
 }
 
 function setupInteractions(){
-  let active = 0;
-  const slides = document.querySelectorAll('.cover-slide');
-
-
-  slides.forEach((slide, i) => slide.addEventListener('click', (event) => {
-    if(event.target.closest('a,button')) return;
-    active = i;
-    document.querySelector(`#${slide.dataset.target}`)?.scrollIntoView({behavior:'smooth'});
-  }));
-
-  const toggle = document.querySelector('.index-toggle');
-  const layer = document.querySelector('.index-layer');
-  const close = () => {
-    document.body.classList.remove('index-open');
-    toggle.setAttribute('aria-expanded','false');
-    layer.setAttribute('aria-hidden','true');
-  };
-  toggle.addEventListener('click', () => {
-    document.body.classList.add('index-open');
-    toggle.setAttribute('aria-expanded','true');
-    layer.setAttribute('aria-hidden','false');
-  });
-  document.querySelector('.index-close').addEventListener('click', close);
-  document.querySelectorAll('[data-index-link]').forEach(link => link.addEventListener('click', close));
-  window.addEventListener('keydown', event => { if (event.key === 'Escape') close(); });
-
   document.querySelectorAll('.gallery').forEach(gallery => {
     let current = 0;
     const track = gallery.querySelector('.gallery-track');
