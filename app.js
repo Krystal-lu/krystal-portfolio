@@ -1,12 +1,12 @@
 const works = [
-  { id:'one', title:'AIGER Kitchen', line:'AI Kitchen · UX & Interaction Design', text:'13 of 22 survey respondents remembered the hood only after switching on the stove. I designed an ignition-linked ventilation flow with visible appliance states and manual control. Explore the evidence, design decision and working simulation.', role:'User Research · Kitchen Concept & UI Design · Simulated Usability Testing · AI-Assisted Prototyping', year:'2025–2026', tone:'a' },
-  { id:'two', title:'EmoBox', line:'Emotional Companion · Product & Interaction Design', text:'A tangible emotional companion and mobile experience for check-ins, optional activities and reflection. EmoBox explores how gentle prompts, expressive feedback and flexible choices can make AI support feel approachable while keeping the user in control.', role:'User Experience Design · Product Design · Interaction Design · UI Design · Physical Prototyping', year:'2025', tone:'b' },
-  { id:'three', title:'Fitsole', line:'Adaptive Footwear · Product & Interaction Design', text:'A wearable concept exploring adjustable arch support across running, walking and sitting. Fitsole connects pressure sensing, an inflatable support module and a proposed mobile interface, bringing everyday context into the design of a physical product.', role:'Product Design · User Experience Design · Interaction Design · Physical Prototyping', year:'2025', tone:'c' },
-  { id:'four', title:'Food Time', line:'Immersive Experience · AI & Spatial Storytelling', text:'An immersive cultural experience concept that invites visitors to share a spring feast with the people of Hemudu. The concept film shows how picking up different objects would connect the dining table to fishing, animal keeping and rice cultivation through coordinated screen and tabletop responses. My contributions included LoRA model training, scene modeling and rendering, character illustration, and animation.', role:'LoRA Model Training · Scene Modeling & Rendering · Character Illustration · Animation', year:'2025', tone:'d' },
-  { id:'five', title:'Little Atlas', line:'Travel Memory Archive · AI-Assisted Trip Planning', text:'A personal travel archive that connects places with photos, dates and memories. Little Atlas brings an illustrated globe, a journey timeline and postcards together, then uses AI to help shape the next trip. Built as a working web prototype through iterative design and AI-assisted development.', role:'Product Design · Interaction Design · AI-Assisted Development', year:'2026', tone:'e' },
-  { id:'six', title:'Re-Natured Nature', line:'Gesture Interaction · Experimental Installation', text:'A gesture-based installation exploring how humans reconstruct nature through cultivation, industrial power and digital information. I implemented camera-based recognition in TouchDesigner: a half-clenched hand, clenched fist and open palm switch between three visual interpretations of the same tree in real time.', role:'Interaction Design · TouchDesigner Implementation · Installation Design', year:'2025', tone:'f' }
+  { id:'one', title:'AIGER Kitchen', line:'Aging in Place · Kitchen Experience & Interaction', text:'Remembering appliance steps and repeatedly checking equipment can interrupt independent cooking for older adults. AIGER combines a connected kitchen layout, readable controls and situational assistance to support familiar routines and keep the cook in control.', role:'User Research · Kitchen Concept & UI Design · Simulated Usability Testing · AI-Assisted Prototyping', year:'2025–2026', tone:'a' },
+  { id:'two', title:'EmoBox', line:'Emotional Support · UX & Interaction Design', text:'An emotional check-in can feel like another demand when it arrives at the wrong moment. EmoBox explores a quieter invitation and optional activities, so people can engage, redraw or leave on their own terms.', role:'User Experience Design · Product Design · Interaction Design · UI Design · Physical Prototyping', year:'2025', tone:'b' },
+  { id:'three', title:'Fitsole', line:'Wearable Experience · Interaction Concept', text:'Walking, running and sitting place different demands on the foot. Fitsole explores activity-based arch support through an inflatable physical prototype and a proposed mobile control flow.', role:'Product Design · User Experience Design · Interaction Design · Physical Prototyping', year:'2025', tone:'c' },
+  { id:'four', title:'Food Time', line:'Spatial Interaction · Cultural Storytelling', text:'How can visitors explore ancient food culture through an action rather than a wall of text? Food Time proposes object-led storytelling: picking up a vessel changes the surrounding scene and tabletop animation.', role:'LoRA Model Training · Scene Modeling & Rendering · Character Illustration · Animation', year:'2025', tone:'d' },
+  { id:'five', title:'Little Atlas', line:'Digital Product · UX & AI Interaction', text:'Travel photos lose their context, and returning to the same city creates more than one story. Little Atlas keeps each visit distinct while connecting memories through a globe and timeline; AI trip plans stay separate from personal records.', role:'Product Design · Interaction Design · AI-Assisted Development', year:'2026', tone:'e' },
+  { id:'six', title:'Re-Natured Nature', line:'Gesture Interaction · TouchDesigner', text:'Human influence on nature is difficult to make tangible. Re-Natured Nature maps three hand gestures to three visual states of a tree, using working camera recognition and real-time switching in TouchDesigner.', role:'Interaction Design · TouchDesigner Implementation · Installation Design', year:'2025', tone:'f' }
 ];
-works.sort((a,b)=>['one','two','five','three','four','six'].indexOf(a.id)-['one','two','five','three','four','six'].indexOf(b.id));
+works.sort((a,b)=>['one','five','two','three','four','six'].indexOf(a.id)-['one','five','two','three','four','six'].indexOf(b.id));
 
 function visual(work, compact=false){
   if(work.id==='six') return `<div class="renature-cover"><img src="assets/re-natured-nature/scene-original.png" alt="Re-Natured Nature final installation scene"></div>`;
@@ -21,7 +21,7 @@ function heroSlide(work, index){
   return `<section class="cover-slide ${index === 0 ? 'active' : ''}" data-slide="${index}" data-target="${work.id}">
     <div class="cover-shade"></div>
     <div class="cover-title display type-hero">SELECTED WORKS BY<br>KRYSTAL LU ©</div>
-    <div class="cover-meta"><span class="type-label">${String(index+1).padStart(2,'0')}</span><b>${work.title}</b><small class="type-caption">${work.line}</small></div>
+    <div class="cover-positioning"><p>UX &amp; INTERACTION DESIGN</p><a href="#one">01 / AIGER Kitchen ↗</a><a href="#five">02 / Little Atlas ↗</a></div><div class="cover-meta"><span class="type-label">${String(index+1).padStart(2,'0')}</span><b>${work.title}</b><small class="type-caption">${work.line}</small></div>
   </section>`;
 }
 
@@ -32,7 +32,7 @@ function aboutBlock(){
       <p><b>KRYSTAL (XINRU) LU</b><br>UX & Product Designer · San Francisco Bay Area</p>
       <p>I design connected products and interfaces that make technology easier to understand and use. My work brings together user research, interaction design and physical prototyping, with a focus on accessible everyday experiences and human-AI interaction.</p>
       <p><b>EDUCATION</b><br>University of California, Berkeley · Master of Design<br>Aug 2026 – Dec 2027 (expected)<br><br>China Academy of Art · B.A. in Product Design<br>Sep 2022 – Jun 2026</p>
-      <p><b>EXPERIENCE</b><br>Fotile Group · UX/UI Design Intern<br>Jun 2025 – Jun 2026<br><br>Free Coffee · Product Design Consultant<br>Sep 2025 – Oct 2025<br><br>Alibaba Cloud · AI Creator & Interaction Designer<br>Mar 2025 – May 2025<br><br>MYbank (Ant Group) · Design Lead, Intern<br>Nov 2024 – Jan 2025<br><br>Ningbo Ruika Electric · Product Design Assistant<br>Jun 2023 – Sep 2023</p>
+      <p><b>EXPERIENCE</b><br>Fotile Group · UX/UI Design Intern<br>Older-adult kitchen experience · Appliance interaction &amp; control UI<br>Jun 2025 – Jun 2026<br><br>Free Coffee · Product Design Consultant<br>Sep 2025 – Oct 2025<br><br>Alibaba Cloud · AI Creator & Interaction Designer<br>Mar 2025 – May 2025<br><br>MYbank (Ant Group) · Design Lead, Intern<br>Nov 2024 – Jan 2025<br><br>Ningbo Ruika Electric · Product Design Assistant<br>Jun 2023 – Sep 2023</p>
       <p><b>TOOLS</b><br>Figma · Adobe Creative Cloud · Rhino · KeyShot · Blender · Arduino · TouchDesigner · Python</p>
       <p><b>CONTACT</b><br><a href="mailto:xinru_lu@berkeley.edu">xinru_lu@berkeley.edu</a><br><a href="tel:+13412133503">+1 341-213-3503</a><br><a href="assets/resume/Krystal-Lu-UX-Resume.pdf?v=20261015" download="Krystal-Lu-UX-Design-Resume.pdf">DOWNLOAD CV ↗</a></p>
       <p><a href="#one">EXPLORE SELECTED WORKS ↓</a></p>
@@ -82,7 +82,7 @@ function workRow(work, index){
       <p>${work.text}</p>
       <p><b>ROLE</b> ${work.role}</p>
       <p><b>YEAR</b> ${work.year}</p>
-      <p><b>VISIT</b> ${work.id==='one' ? '<a href="aiger-notes.html">CASE STUDY ↗</a> · <a href="aiger-notes.html#prototype">TRY COOKING FLOW ↗</a>' : work.id==='two' ? '<a href="emobox.html">CASE STUDY ↗</a> · <a href="emobox.html#demo">USAGE VIDEO ↗</a>' : work.id==='three' ? '<a href="fitsole.html">CASE STUDY ↗</a> · <a href="fitsole.html#demo">PROJECT DEMO ↗</a>' : work.id==='four' ? '<a href="food-time.html">CASE STUDY ↗</a> · <a href="food-time.html#demo">CONCEPT FILM ↗</a>' : work.id==='five' ? '<a href="little-atlas.html">CASE STUDY ↗</a> · <a href="https://little-atlas-9tcl.vercel.app/" target="_blank" rel="noopener">LIVE PROTOTYPE ↗</a>' : work.id==='six' ? '<a href="re-natured-nature.html">CASE STUDY ↗</a> · <a href="re-natured-nature.html#demo">PROJECT VIDEO ↗</a>' : 'project link / case study link'}</p>
+      <p><b>VISIT</b> ${work.id==='one' ? '<a href="aiger-notes.html">CASE STUDY ↗</a> · <a href="aiger-notes.html#prototype">TRY KITCHEN INTERFACE ↗</a>' : work.id==='two' ? '<a href="emobox.html">CASE STUDY ↗</a> · <a href="emobox.html#demo">USAGE VIDEO ↗</a>' : work.id==='three' ? '<a href="fitsole.html">CASE STUDY ↗</a> · <a href="fitsole.html#demo">PROJECT DEMO ↗</a>' : work.id==='four' ? '<a href="food-time.html">CASE STUDY ↗</a> · <a href="food-time.html#demo">CONCEPT FILM ↗</a>' : work.id==='five' ? '<a href="little-atlas.html">CASE STUDY ↗</a> · <a href="https://little-atlas-9tcl.vercel.app/" target="_blank" rel="noopener">LIVE PROTOTYPE ↗</a>' : work.id==='six' ? '<a href="re-natured-nature.html">CASE STUDY ↗</a> · <a href="re-natured-nature.html#demo">PROJECT VIDEO ↗</a>' : 'project link / case study link'}</p>
     </div>
     <div class="gallery" data-gallery="${work.id}">
       <div class="gallery-track">${(work.id==='five'?[1]:['two','three','four','six'].includes(work.id)?[1,2]:[1,2,3]).map(n => galleryItem(work,n)).join('')}</div>
@@ -93,7 +93,7 @@ function workRow(work, index){
 }
 
 function render(){
-  document.querySelector('#content').innerHTML = `<div class="cover-stage">${works.map(heroSlide).join('')}</div>${aboutBlock()}<section class="work-feed">${works.map(workRow).join('')}</section><footer class="end"><a href="mailto:xinru_lu@berkeley.edu">CONTACT XINRU_LU@BERKELEY.EDU</a><a href="#top">BACK TO TOP</a><span>©2026 KRYSTAL LU</span></footer>`;
+  document.querySelector('#content').innerHTML = `<div class="cover-stage">${works.map(heroSlide).join('')}</div><section class="work-feed">${works.map(workRow).join('')}</section>${aboutBlock()}<footer class="end"><a href="mailto:xinru_lu@berkeley.edu">CONTACT XINRU_LU@BERKELEY.EDU</a><a href="#top">BACK TO TOP</a><span>©2026 KRYSTAL LU</span></footer>`;
   document.querySelector('.index-grid').innerHTML = works.map((work, index) => `<a href="#${work.id}" data-index-link><small>${String(index+1).padStart(2,'0')}</small>${visual(work,true)}<b>${work.title}</b></a>`).join('');
 }
 
@@ -106,7 +106,8 @@ function setupInteractions(){
     slides.forEach((slide, i) => slide.classList.toggle('active', i === active));
   }, 3200);
 
-  slides.forEach((slide, i) => slide.addEventListener('click', () => {
+  slides.forEach((slide, i) => slide.addEventListener('click', (event) => {
+    if(event.target.closest('a,button')) return;
     active = i;
     document.querySelector(`#${slide.dataset.target}`)?.scrollIntoView({behavior:'smooth'});
   }));

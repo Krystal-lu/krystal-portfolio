@@ -79,3 +79,6 @@ button{font:inherit;color:inherit}
 @media(max-width:540px){.work-feed .work-row > .gallery{margin-left:-22px;margin-right:-22px}}
 
 #five .gallery-prev,#five .gallery-next{display:none}
+
+/* Keep the portfolio direction and first two cases explicit. */
+.cover-positioning{position:absolute;left:6.2vw;top:12vh;z-index:4;font-family:var(--font-label-family);font-size:clamp(12px,1vw,15px);letter-spacing:.06em}.cover-positioning p{margin:0 0 16px;color:#e8d4ad;font-weight:700}.cover-positioning a{display:inline-block;color:#f3f1ea;border:1px solid #777;border-radius:5px;padding:10px 14px;margin:0 10px 10px 0;text-decoration:none}.cover-positioning a:hover,.cover-positioning a:focus-visible{background:#f3f1ea;color:#111}.cover-positioning a:focus-visible{outline:3px solid #e8d4ad;outline-offset:4px}@media(max-width:540px){.cover-positioning{left:24px;top:13vh;max-width:86vw;font-size:12px}.cover-positioning a{padding:9px 11px;margin-right:6px}}
