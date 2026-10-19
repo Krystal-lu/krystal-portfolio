@@ -1,12 +1,11 @@
 const works = [
-  { id:'one', title:'AIGER Kitchen', line:'Aging in Place · Kitchen Experience & Interaction', text:'Older adults told me they sometimes forgot an appliance step or went back to check whether everything was off. AIGER brings the kitchen layout, controls and reminders together to support independent cooking.', role:'User Research · Kitchen Concept & UI Design · Simulated Usability Testing · AI-Assisted Prototyping', year:'2025–2026', tone:'a' },
-  { id:'two', title:'EmoBox', line:'Emotional Support · UX & Interaction Design', text:'A check-in can feel like another demand when it arrives at the wrong moment. EmoBox offers a small invitation, then lets people try an activity, draw another card or stop.', role:'User Experience Design · Product Design · Interaction Design · UI Design · Physical Prototyping', year:'2025', tone:'b' },
-  { id:'three', title:'Fitsole', line:'Wearable Experience · Interaction Concept', text:'Walking, running and sitting ask different things of a shoe. Fitsole explores support that can change between activities, using an inflatable prototype and a proposed phone control.', role:'Product Design · User Experience Design · Interaction Design · Physical Prototyping', year:'2025', tone:'c' },
+  { id:'one', title:'AIGER Kitchen', line:'Aging in Place · Kitchen Experience & Interaction', text:'Older adults reported forgetting to start the extractor hood and going back to check whether appliances were off. AIGER links the hood to ignition and puts appliance states in one place, within a kitchen layout designed around their cooking routines.', role:'User Research · Kitchen Concept & UI Design · Simulated Usability Testing · AI-Assisted Prototyping', year:'2025–2026', tone:'a' },
+  { id:'five', title:'Little Atlas', line:'Digital Product · UX & AI Interaction', text:'Photos from different visits to the same city can get mixed together, losing the dates and stories behind them. Little Atlas keeps each visit separate and connects its photos and notes through a globe and timeline. AI trip plans have their own space.', role:'Product Design · Interaction Design · AI-Assisted Development', year:'2026', tone:'e' },
+  { id:'two', title:'EmoBox', line:'Emotional Support · UX & Interaction Design', text:'Testing feedback showed that a phone pop-up could make a bad mood feel worse, and card drawing could feel too rigid. EmoBox proposes a quieter first invitation and gives people clear choices to try, redraw or stop.', role:'User Experience Design · Product Design · Interaction Design · UI Design · Physical Prototyping', year:'2025', tone:'b' },
+  { id:'three', title:'Fitsole', line:'Wearable Experience · Interaction Concept', text:'Fixed arch support leaves little room to adjust between sitting, walking and running. Fitsole explores an inflatable support module and activity-based phone controls; the pressure sensor and pump worked, while the app connection remains a proposal.', role:'Product Design · User Experience Design · Interaction Design · Physical Prototyping', year:'2025', tone:'c' },
   { id:'four', title:'Food Time', line:'Spatial Interaction · Cultural Storytelling', text:'What if visitors could learn about Hemudu food culture by joining a meal? Food Time proposes a table where picking up an object opens a story on the screens and tabletop.', role:'LoRA Model Training · Scene Modeling & Rendering · Character Illustration · Animation', year:'2025', tone:'d' },
-  { id:'five', title:'Little Atlas', line:'Digital Product · UX & AI Interaction', text:'A photo can lose its date, place and story in a crowded camera roll. Little Atlas keeps each visit together and lets people revisit it on a globe or timeline, with a separate space for AI trip plans.', role:'Product Design · Interaction Design · AI-Assisted Development', year:'2026', tone:'e' },
   { id:'six', title:'Re-Natured Nature', line:'Gesture Interaction · TouchDesigner', text:'We shape nature by growing it, building with it and turning it into information. Here, three hand gestures change the same tree in real time, making those relationships visible.', role:'Interaction Design · TouchDesigner Implementation · Installation Design', year:'2025', tone:'f' }
 ];
-works.sort((a,b)=>['one','five','two','three','four','six'].indexOf(a.id)-['one','five','two','three','four','six'].indexOf(b.id));
 
 function visual(work, compact=false){
   if(work.id==='six') return `<div class="renature-cover"><img src="assets/re-natured-nature/scene-original.png" alt="Re-Natured Nature final installation scene"></div>`;
@@ -93,18 +92,14 @@ function workRow(work, index){
 }
 
 function render(){
-  document.querySelector('#content').innerHTML = `<div class="cover-stage">${works.map(heroSlide).join('')}</div><section class="work-feed">${works.map(workRow).join('')}</section>${aboutBlock()}<footer class="end"><a href="mailto:xinru_lu@berkeley.edu">CONTACT XINRU_LU@BERKELEY.EDU</a><a href="#top">BACK TO TOP</a><span>©2026 KRYSTAL LU</span></footer>`;
+  document.querySelector('#content').innerHTML = `<div class="cover-stage">${works.slice(0,1).map(heroSlide).join('')}</div><section class="work-feed">${works.map(workRow).join('')}</section>${aboutBlock()}<footer class="end"><a href="mailto:xinru_lu@berkeley.edu">CONTACT XINRU_LU@BERKELEY.EDU</a><a href="#top">BACK TO TOP</a><span>©2026 KRYSTAL LU</span></footer>`;
   document.querySelector('.index-grid').innerHTML = works.map((work, index) => `<a href="#${work.id}" data-index-link><small>${String(index+1).padStart(2,'0')}</small>${visual(work,true)}<b>${work.title}</b></a>`).join('');
 }
 
 function setupInteractions(){
   let active = 0;
   const slides = document.querySelectorAll('.cover-slide');
-  const timer = setInterval(() => {
-    if (document.body.classList.contains('index-open')) return;
-    active = (active + 1) % slides.length;
-    slides.forEach((slide, i) => slide.classList.toggle('active', i === active));
-  }, 3200);
+
 
   slides.forEach((slide, i) => slide.addEventListener('click', (event) => {
     if(event.target.closest('a,button')) return;
