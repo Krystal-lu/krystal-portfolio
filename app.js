@@ -21,7 +21,7 @@ function heroSlide(){
     <div class="cover-shade"></div>
     <div class="cover-positioning"><p>UX DESIGNER</p><span>Product &amp; Interaction Design</span></div>
     <h1 class="cover-title display type-hero">SELECTED WORKS BY<br>KRYSTAL LU ©</h1>
-    <a class="cover-scroll" href="#one"><span>Scroll to explore my work</span><span aria-hidden="true">↓</span></a>
+    <a class="cover-scroll" href="#about"><span>Scroll to explore</span><span aria-hidden="true">↓</span></a>
   </section>`;
 }
 
@@ -103,7 +103,7 @@ function workRow(work, index){
 }
 
 function render(){
-  document.querySelector('#content').innerHTML = `<div class="cover-stage">${heroSlide()}</div><section class="work-feed">${works.map(workRow).join('')}</section>${aboutBlock()}<footer class="end"><a href="mailto:xinru_lu@berkeley.edu">CONTACT XINRU_LU@BERKELEY.EDU</a><a href="#top">BACK TO TOP</a><span>©2026 KRYSTAL LU</span></footer>`;
+  document.querySelector('#content').innerHTML = `<div class="cover-stage">${heroSlide()}</div>${aboutBlock()}<section class="work-feed">${works.map(workRow).join('')}</section><footer class="end"><a href="mailto:xinru_lu@berkeley.edu">CONTACT XINRU_LU@BERKELEY.EDU</a><a href="#top">BACK TO TOP</a><span>©2026 KRYSTAL LU</span></footer>`;
 }
 
 function setupInteractions(){
